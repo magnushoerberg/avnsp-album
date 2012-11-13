@@ -1,6 +1,9 @@
+require './hashable'
+
 AlbumValues = Struct.new(:date, :created, :name,
                          :creator, :festivity, :images)
 class Album < AlbumValues
+  include Hashable
   def initialize(params)
     params = params.map { |k, v| {k.to_sym => v} }.inject(&:merge)
     params[:creator] = Creator.new(params[:creator])
@@ -24,6 +27,7 @@ end
 
 CreatorValues = Struct.new(:name, :uuid)
 class Creator < CreatorValues
+  include Hashable
   def initialize(params)
     params = params.map { |k, v| {k.to_sym => v} }.inject(&:merge)
     super(params[:name], params[:uuid])
@@ -34,6 +38,7 @@ class Creator < CreatorValues
 end
 FestivityValues = Struct.new(:name, :uuid)
 class Festivity < FestivityValues
+  include Hashable
   def initialize(params)
     params = params.map { |k, v| {k.to_sym => v} }.inject(&:merge)
     super(params[:name],
