@@ -1,5 +1,6 @@
 require 'sinatra'
 
 get '/' do
-  "hello"
+  @albums = AlbumRepository.find()
+  haml :index
 end

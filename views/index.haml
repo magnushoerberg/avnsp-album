@@ -1,0 +1,24 @@
+.page-header
+  %h1 Album
+%table.table
+  %thead
+    %tr
+      %th
+      %th Datum
+      %th Arr
+      %th Album
+      %th Bilder
+      %th Skapad av
+  %tbody
+    -@albums.each do |album|
+      %tr
+        %td
+          %img{src: album.thumb_url}
+          = album.description
+        %td= album.date
+        %td
+          %a{href: album.festivity.href}= album.festivity.name
+        %td= album.name
+        %td= album.images.count
+        %td
+          %a{href: album.creator.href }= album.creator.name

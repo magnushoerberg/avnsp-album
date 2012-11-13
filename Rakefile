@@ -1,5 +1,7 @@
 require 'bundler/setup'
 require './repositories'
-require './app'
 
-run Sinatra::Application
+namespace :seed do
+  task :albums do
+  end
+end
